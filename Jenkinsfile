@@ -25,6 +25,10 @@ pipeline {
         sh 'terraform plan -var="key_name=MB-R-KY-1"'
     }
     }
-
+   
+        stage('Terraform Apply') {
+            steps {
+                sh 'terraform apply -auto-approve -var="key_name=MB-R-KY-1"'
+            }
     }
 }
