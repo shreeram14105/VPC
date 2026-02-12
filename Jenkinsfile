@@ -1,12 +1,11 @@
 pipeline {
     agent any
 
+    environment {
+        TF_VAR_key_name = "MB-R-KY-1"
+    }
+
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
 
         stage('Terraform Init') {
             steps {
@@ -20,15 +19,16 @@ pipeline {
             }
         }
 
-       stage('Terraform Plan') {
-    steps {
-        sh 'terraform plan -var="key_name=MB-R-KY-1"'
-    }
-    }
-   
+        stage('Terraform Plan') {
+            steps {
+                sh 'terraform plan'
+            }
+        }
+
         stage('Terraform Apply') {
             steps {
-                sh 'terraform apply -auto-approve -var="key_name=MB-R-KY-1"'
+                sh 'terraform apply -auto-approve'
             }
+        }
     }
 }
