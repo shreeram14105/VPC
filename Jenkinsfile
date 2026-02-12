@@ -20,10 +20,11 @@ pipeline {
             }
         }
 
-        stage('Terraform Plan') {
-            steps {
-                sh 'terraform plan'
-            }
-        }
+       stage('Terraform Plan') {
+    steps {
+        sh 'terraform plan -var="key_name=MB-R-KY-1"'
+    }
+    }
+
     }
 }
